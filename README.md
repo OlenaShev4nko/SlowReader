@@ -41,9 +41,10 @@ Install [Docker Desktop](https://www.docker.com/) for your operating system.
 ### 3️⃣ Clone this Repository
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
+git clone https://github.com/OlenaShev4nko/SlowReader.git
+cd SlowReader
 ```
+This will create a local copy of the SlowReader app on your machine, ready for setup and configuration.
 
 ---
 
