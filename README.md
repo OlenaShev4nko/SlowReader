@@ -192,7 +192,7 @@ When a user asks a question, the hybrid RAG process starts. First, we extract ke
 
 ### Tab 4 — Library & Saved Documents
 
-In the library tub, we can confirm the book is uploaded.
+In the library tab, we can confirm the book is uploaded.
 
 <img src="assets/Tab_4_Library.png" width="100%" alt="Library of Uploaded Books">
 
