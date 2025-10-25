@@ -1,0 +1,93 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.log
+*.pot
+*.mo
+*.orig
+*.swp
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+
+# Streamlit cache and logs
+.streamlit/
+.streamlit/secrets.toml
+
+# Tests and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints
+
+# Build and dist files
+build/
+dist/
+*.egg
+*.manifest
+*.spec
+
+# IDE / Editor
+.vscode/
+.idea/
+*.iml
+
+# System files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# Docker
+docker-compose.override.yml
+**/__pycache__/
+logs/
+tmp/
+*.pid
+
+# Project specific
+uploads/
+assets/*.tmp
+assets/*.bak
+.env
+*.sqlite3
+
+# Ollama model cache
+ollama_models/
+ollama_cache/
+
+# Neo4j data and logs
+neo4j/data/
+neo4j/logs/
+neo4j/import/
+neo4j/plugins/
+data/neo4j/
+
+# Reports and exports
+reports/
+exports/
+*.csv
+*.xlsx
+*.json
+
+# Backup files
+*.bak
+*.old
+*.save

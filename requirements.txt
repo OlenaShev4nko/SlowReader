@@ -1,0 +1,17 @@
+docker-py
+pandas
+mcp-neo4j-cypher
+streamlit
+langchain
+langchain-community
+requests
+python-dotenv
+pytest
+langchain-ollama
+neo4j
+pypdf
+langchain-mcp-adapters
+langgraph
+langchain-ollama
+langchain-mcp-adapters
+langchain-core
