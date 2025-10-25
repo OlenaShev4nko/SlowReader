@@ -128,32 +128,61 @@ You can now re-upload PDFs or re-ingest data from scratch.
 
 ## Screenshots & Workflow
 
+This is the helicopter view architecture of the app, consisting of a Streamlit user interface, local Ollamma chat and embedding models, an MCP server, and a Neo4j graph database.
 
 <img src="assets/app_architecture.png" width="100%" alt="App Architecture Overview">
 
 
 ---
 
+The app has four tabs: 
+- Tab 1: The PDF document upload, 
+- Tab 2: The knowledge graph builder
+- Tab 3: Hybrid RAG
+- Tab 4: Library
+
 ### Tab 1 — Upload a PDF
 
+Imagine you are reading a technical book and plan to take notes from it. We can upload it to the app.
+
 <img src="assets/Tab_1.jpg" width="100%" alt="Tab 1 — Upload a PDF">
+
+The moment we upload the book, the app extracts the text from the PDF, divides it into chunks, and makes an embedding vector from each chunk. Then, through the MCP server, we are asking the Neo4j database to create a document node for the book, a node for each chunk, and add chunk embeddings into the Neo4j vector index.
+
 <img src="assets/pdf_upload.png" width="100%" alt="PDF Upload BPMN Diagram">
+
+Let’s check the database. Here is our book and its chunks.
+
 <img src="assets/Book_in_neo4j.png" width="100%" alt="Book in neo4j">
 
 ---
 
 ### Tab 2 — Build Knowledge Graph
+
+Imagine you’ve found a valuable piece of text with a code example and you want to make a note of it. You can copy and paste this text with a code and push the build graph button.
+
 <img src="assets/Tab_2_1.png" width="100%" alt="Knowledge Graph Construction1">
 <img src="assets/Tab_2_2.png" width="100%" alt="Knowledge Graph Construction2">
+
+At the exact moment the build graph button is pressed, the LLM extracts triplets of concepts and their connections. With the help of MCP, we are merging them into our graph. Additionally, we vectorize each concept and search for semantically related text chunks to link them together.
+
 <img src="assets/build_Knowledge_graph.png" width="100%" alt="Knowledge Graph Build Step 1">
+
+Please note that the concept stores a code example as a property.
+
 <img src="assets/graph.png" width="100%" alt="Graph Visualization">
 
 
 ---
 
 ### Tab 3 — Chat with Hybrid RAG
+
+Now we can ask our chat LLM about the concepts we have in our database.
+
 <img src="assets/Tab_3_chat.png" width="100%" alt="Chat Interface">
 <img src="assets/Tab_3_chat_1.png" width="100%" alt="Chat Answer Example">
+
+When a user asks a question, the hybrid RAG process starts. First, we extract key concepts from the question and search for them in our graph database. At the same time, we convert the question into an embedding vector and use it to find semantically similar text chunks in the vector index. This way, we bring together structured knowledge from the graph and contextual meaning from the text. Both sources are then combined and passed to the LLM as context, allowing it to generate an accurate and well-grounded response.
 
 <img src="assets/hybrid_RAG.png" width="100%" alt="Hybrid RAG Diagram">
 
@@ -161,6 +190,8 @@ You can now re-upload PDFs or re-ingest data from scratch.
 ---
 
 ### Tab 4 — Library & Saved Documents
+
+In the library tub, we can confirm the book is uploaded.
 
 <img src="assets/Tab_4_Library.png" width="100%" alt="Library of Uploaded Books">
 
